@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+<script>
+    // What it does ?
+    // 1) lets computer choose a rock/paper/or scissors
+    // 2) let user choose a rock/paper/scissor
+    // 3) compare the values **
+    // 4) print the result
+
+    // How to compare ? 
+    // paper > rock
+    // rock > scissors
+    // scissors > paper
+
+    let computerWins = 0;
+    let playerWins = 0;
+
+    function getComputerChoice() {
+        const selections = ["Rock", "Paper", "Scissors"];
+        let choice = Math.floor(Math.random()*selections.length); // choose random number between 0,1,2
+        let result = selections[choice]; // choose value form array
+        return result;
+    };
+
+    //let player choose 
+    function getPlayerChoice() {
+        let choice = prompt("Choose Rock, Paper or Scissors.");
+        return choice;
+    };
+    // setting the fuctions
+    // games logic, decides who will win the run 
+    function playRound() {
+    let computerSelection = getComputerChoice();
+    let playerSelection = getPlayerChoice();
+        if (playerSelection == computerSelection)
+            console.log ("Both of you choosed " + playerSelection + ".It is a tie.")
+
+        else if  (playerSelection == "Rock") {
+            if (computerSelection == "Paper" )
+            {
+                computerWins++;
+                console.log("Computer choosed Paper. You lost");
+            }
+            
+            else
+            {
+                playerWins++;
+                console.log("Computer choosed Scissors. You won");
+            }
+        }
+
+        else if  (playerSelection == "Paper") {
+            if (computerSelection == "Rock" )
+            {
+                playerWins++;
+                console.log("Computer choosed Rock. You won"); 
+            }
+            
+            else 
+            {
+                computerWins++;
+                console.log("Computer choosed Scissors. You lost");
+            }
+        }
+
+        else if  (playerSelection == "Scissors") {
+            if (computerSelection == "Paper" )
+            {
+                playerWins++;
+                console.log("Computer choosed Paper. You won"); 
+            }
+            
+            else
+            {
+                computerWins++;
+                console.log("Computer choosed Rock. You lost");
+            }
+        }
+    };
+
+    //runs 5 games and prints the result, to play a game it calls playRound function
+    function game() {
+        const runs = 5;
+
+        for (let i = 0; i < runs; i++) {
+            playRound();
+        }
+
+        if (computerWins > playerWins) {
+            console.log("Computer won. Score is " + computerWins +" to " + playerWins)
+        }
+
+        else if (playerWins > computerWins) {
+            console.log("You won. Score is" + playerWins +" to " + computerWins)
+
+        }
+        
+        else {
+            console.log("No one won. It is a tie.")
+        }
+
+    };
+
+
+</script>
+</body>
+</html>
